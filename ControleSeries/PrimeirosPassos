@@ -13,3 +13,6 @@ php artisan make:model Temporada -m
 
 -- Criando um modelo e uma migrate (Episodio)
 php artisan make:model Episodio -m
+
+-- Rodando migrate
+php artisan migrate
