@@ -1,0 +1,15 @@
+-- Istalando pacotes composer.json
+composer install
+
+-- rodando migrate no banco de dados
+php artisan migrate
+
+-- subindo servidor
+php artisan serve
+
+-- Criando um modelo e uma migrate (Temporada)
+
+php artisan make:model Temporada -m
+
+-- Criando um modelo e uma migrate (Episodio)
+php artisan make:model Episodio -m
