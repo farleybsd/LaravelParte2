@@ -1,23 +1,44 @@
 <?php
+
 namespace App\Services;
+
 use App\Serie;
+use Illuminate\Support\Facades\DB;
 
 class CriadordeSerie
 {
-    public function criarSerie(string $nomeSerie, int $qtd_temporadas, int $ep_por_temporada): Serie
-    {
+    public function criarSerie(
+        string $nomeSerie,
+        int $qtdTemporadas,
+        int $epPorTemporada
+    ): Serie {
+        $serie = null;
+        DB::beginTransaction(); // fazer dentro do try catch
         $serie = Serie::create(['nome' => $nomeSerie]);
-        $qtdTemporadas = $qtd_temporadas; // inpourt do html
+        $this->criaTemporadas($qtdTemporadas, $epPorTemporada, $serie);
+        DB::commit();
 
-        for ($i = 1; $i < $qtdTemporadas; $i++) {
-            $temporada =  $serie->temporadas()->create(['numero' => $i]); // chama o  relacionamento de serie com temporada
-
-
-            for ($j = 1; $j < $ep_por_temporada; $j++) {
-                $temporada->episodios()->create(['numero' => $j]);
-            }
-        }
 
         return $serie;
+    }
+
+    private function criaTemporadas(int $qtdTemporadas, int $epPorTemporada, Serie $serie)
+    {
+        for ($i = 0; $i <= $qtdTemporadas; $i++) {
+            $temporada = $serie->temporadas()->create(['numero' => $i]);
+
+            $this->criaEpisodios($epPorTemporada, $temporada);
+        }
+    }
+
+
+
+    private function criaEpisodios(int $epPorTemporada, \Illuminate\Database\Eloquent\Model $temporada): void
+
+    {
+
+        for ($j = 1; $j <= $epPorTemporada; $j++) {
+            $temporada->episodios()->create(['numero' => $j]);
+        }
     }
 }
