@@ -16,3 +16,7 @@ php artisan make:model Episodio -m
 
 -- Rodando migrate
 php artisan migrate
+
+-- Criando um Controller
+php artisan make:controller Temporadas
+
