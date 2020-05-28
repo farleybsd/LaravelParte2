@@ -6,6 +6,7 @@ use App\Episodio;
 use App\Http\Requests\SeriesFormRequest;
 use App\Serie;
 use App\Services\CriadordeSerie;
+use App\Services\RemoverdorDeSerie;
 use App\Temporada;
 use Illuminate\Http\Request;
 
@@ -44,21 +45,9 @@ class SeriesController extends Controller
         return redirect()->route('listar_series');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, RemoverdorDeSerie $removerdorDeSerie)
     {
-        $serie = Serie::find($request->id);
-
-        $nomeserie = $serie->nome;
-
-        $serie->temporadas->each(function (Temporada $temporada) {
-
-
-            $temporada->episodios->each(function (Episodio $episodio) {
-                $episodio->delete();
-            });
-            $temporada->delete();
-        });
-        $serie->delete();
+        $nomeserie = $removerdorDeSerie->removerSerie($request->id);
         $request->session()
             ->flash(
                 'mensagem',
