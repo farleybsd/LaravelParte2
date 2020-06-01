@@ -23,3 +23,6 @@ php artisan make:controller Temporadas
 -- Quando criar uma clase tem que rosa auto reload do composer
 composer dump-autoload
 
+--Criando um Controller
+php artisan make:controller EpisodiosController
+
