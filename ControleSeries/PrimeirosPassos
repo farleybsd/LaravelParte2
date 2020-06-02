@@ -34,3 +34,5 @@ php artisan migrate
 
 -- Criando Estrutura de autenthicacao do laravel
 php artisan make:auth
+Depois rodar um
+composer update

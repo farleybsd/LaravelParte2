@@ -9,11 +9,22 @@ use App\Services\CriadordeSerie;
 use App\Services\RemoverdorDeSerie;
 use App\Temporada;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SeriesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); // authenticacao para todas as rotas do controller
+    }
     public function index(Request $request)
     {
+        // protegendo uma funcao
+        //     if (!Auth::check()) {
+        //         echo "Não autenticado";
+        //         exit();
+        //     }
+
         $series = Serie::query()
             ->orderBy('nome')
             ->get();
