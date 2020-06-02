@@ -26,3 +26,8 @@ composer dump-autoload
 --Criando um Controller
 php artisan make:controller EpisodiosController
 
+--adiconando uma migrate a uma tabela
+php artisan make:migration adiciona_campo_assistido --table=episodios
+
+-- Rodando migrate
+php artisan migrate
