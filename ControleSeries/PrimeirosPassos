@@ -36,3 +36,12 @@ php artisan migrate
 php artisan make:auth
 Depois rodar um
 composer update
+
+-- rota criada pelo laravel
+http://localhost:8000/home
+
+--criada por mim
+http://localhost:8000/entrar
+
+-- Criando Controller entrar
+php artisan make:controller EntrarController
