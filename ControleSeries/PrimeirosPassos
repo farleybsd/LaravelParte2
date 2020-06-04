@@ -45,3 +45,6 @@ http://localhost:8000/entrar
 
 -- Criando Controller entrar
 php artisan make:controller EntrarController
+
+-- Criando o Registro Controller
+php artisan make:controller RegistroController
