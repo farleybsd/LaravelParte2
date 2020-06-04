@@ -19,22 +19,22 @@ Route::get('/series', 'SeriesController@index')
 
 Route::get('/series/criar', 'SeriesController@create')
     ->name('form_criar_serie')
-    ->middleware('auth'); // protegendo a rota com senha
+    ->middleware('autenticador'); // protegendo a rota com senha
 
 Route::post('/series/criar', 'SeriesController@store')
-    ->middleware('auth'); // protegendo a rota com senha
+    ->middleware('autenticador'); // protegendo a rota com senha
 
 Route::delete('/series/{id}', 'SeriesController@destroy')
-    ->middleware('auth'); // protegendo a rota com senha
+    ->middleware('autenticador'); // protegendo a rota com senha
 
 Route::get('/series/{serieId}/temporadas', 'TemporadasController@index');
 
 Route::post('/series/{id}/editaNome', 'SeriesController@editaNome')
-    ->middleware('auth'); // protegendo a rota com senha
+    ->middleware('autenticador'); // protegendo a rota com senha
 
 Route::get('/temporadas/{temporada}/episodios', 'EpisodiosController@index');
 Route::post('/temporadas/{temporada}/episodios/assistir', 'EpisodiosController@assistir')
-    ->middleware('auth'); // protegendo a rota com senha
+    ->middleware('autenticador'); // protegendo a rota com senha
 
 Auth::routes();
 

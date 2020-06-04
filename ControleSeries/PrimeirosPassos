@@ -48,3 +48,7 @@ php artisan make:controller EntrarController
 
 -- Criando o Registro Controller
 php artisan make:controller RegistroController
+
+--Criando middleware
+php artisan make:middleware Autenticador
+Depois registar no Kernel
