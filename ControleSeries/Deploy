@@ -31,3 +31,5 @@ Espero que tenha aproveitado os conhecimentos aqui abordados e até a conclusão
 no .env
 APP_ENV= prod
 APP_DEBUG=false
+
+https://laravel.com/docs/5.8/deployment
