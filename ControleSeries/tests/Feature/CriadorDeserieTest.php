@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class CriadorDeserieTest extends TestCase
 {
+    use RefreshDatabase;
 
     public function testCriarSerie()
     {
