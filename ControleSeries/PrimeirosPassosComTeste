@@ -6,3 +6,6 @@ vendor\bin\phpunit
 
 -- Criando Teste de Insert
 php artisan make:test CriadorDeserieTest
+
+-- Removedor de Serie Teste
+php artisan make:test RemovedorSerieTest
