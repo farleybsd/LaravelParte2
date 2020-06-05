@@ -1,0 +1,33 @@
+
+
+Para rodarmos uma aplicação, depois de termos o código, a primeira coisa a ser feita é rodar o composer install.
+Isso porque a pasta "vendor" não deve ser enviada junto com o restante do projeto, e inclusive, por padrão, está no arquivo .gitignore. A pasta "vendor" possui todas as dependências do projeto, o que significa que ela é enorme.
+ Além disso, essas dependências podem ficar desatualizadas. Quando rodamos o composer install, ele instala as mais dependências mais recentes possíveis, dentro das restrições definidas no composer.json.
+
+Depois, com o Laravel, deveremos executar php artisan key:genereate. Esse código adiciona uma string à linha APP_KEY do arquivo .env.
+Essa linha é utilizada como chave para realizar a parte de segurança do Laravel, como, por exemplo, criptografar as senhas de usuário.
+Portanto, sempre que colocamos uma aplicação em produção, precisamos alterar esse valor para que ela se mantenha segura.
+
+Em seguida, deveremos alterar a linha APP_ENV desse mesmo arquivo para prod. Dessa forma, o Laravel conseguirá buscar informações de como castear os dados e realizar algumas otimizações internas.
+Também deveremos mudar a linha APP_DEBUG para false. Assim, se a nossa aplicação retornar uma exceção, ao invés de retornar diversas informações do projeto, receberemos somente um 500 Server Error, o que ajuda bastante na segurança.
+
+Tendo feito isso, é pouco provável que utilizemos o SQLite como banco de dados de produção. Portanto, também precisaremos alterar os dados de conexão com o banco de dados.
+Depois de criado o banco de dados, precisaremos rodar as migrations, da mesma forma que fizemos várias vezes durante o curso.
+
+Basicamente, são essas as etapas para colocar uma aplicação Laravel no ar. Ainda temos outra questão sobre como configurar o servidor.
+É muito comum associarem o PHP ao servidor web Apache. Porém, essa não é a única opção de servidor - e nem sempre é a melhor.
+Eu, por exemplo, em projetos nos quais cuido da infraestrutura, gosto de utilizar o Nginx.
+
+Uma questão bastante interessante, e infelizmente pouco implementada, são os servidores de integração contínua.
+Para se aprofundar mais nesse tema, recomendo fortemente os cursos de DevOps da Alura, principal o que aborda Jenkins. Você pode, inclusive, no seu processo de deploy,
+fazer com que o Jenkins rode todos os testes, garantindo que a aplicação esteja funcionando no momento de colocá-la em produção.
+
+Depois de tudo isso, você provavelmente desejará entender melhor sobre as questões de log, questões de infraestrutura um pouco mais avançadadas,
+ questões de continuous integration e continuous delivery (integração e entrega contínuas), entre outras. Sâo diversos conteúdos, e faz parte do trabalho do desenvolvedor entender pelo menos um pouco de cada um deles.
+
+Espero que tenha aproveitado os conhecimentos aqui abordados e até a conclusão do curso!
+
+
+no .env
+APP_ENV= prod
+APP_DEBUG=false
