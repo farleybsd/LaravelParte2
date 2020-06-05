@@ -3,3 +3,6 @@ php artisan make:test TemporadaTest --unit
 
 --Execultando um Teste
 vendor\bin\phpunit
+
+-- Criando Teste de Insert
+php artisan make:test CriadorDeserieTest
