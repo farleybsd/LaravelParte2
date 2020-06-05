@@ -1,0 +1,5 @@
+-- Criando um Teste
+php artisan make:test TemporadaTest --unit
+
+--Execultando um Teste
+vendor\bin\phpunit
