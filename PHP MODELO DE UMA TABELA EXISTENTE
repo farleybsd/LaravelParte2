@@ -1,0 +1,13 @@
+class Flight extends Model
+{
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'my_flights';
+}
+
+$user = new User()
+$user->name = 'xx';
+$user->save()
