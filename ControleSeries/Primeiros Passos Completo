@@ -1,0 +1,127 @@
+1 Criar os Modelo  Fazendo o relacionamento ->
+* belongsTo
+*hasMany
+
+2 Criar as propiedades da tabelas ->
+* Id
+*Nome
+essas coisas
+
+3  Alterar a View series Create para colocar ->
+* Input Temporada
+* input series
+
+4 Controller de Serie Iremos criar o cadastro de
+* Serie
+*Temporada
+Alterar a funcao public function store(SeriesFormRequest $request)
+
+5.0 Exibindo as temporadas de uma série
+
+5.1
+Aletrar a view View-> Series -> Index
+5.2
+Adicionando esse link
+<a href="" class="btn btn-info btn-sm"></a>
+5.3
+Adicionando Controller de temporadas
+php artisan make:Controller TemporadasController
+5.4
+Alterar o arquivo em routes -> Web.php
+5.5Criar a funcao Index no Controller Temporada
+public function index(int $serieid)
+5.6 Pegar as temporadas de uma series
+ $temporadas = Serie::find($serieid)->temporadas; // relacionamento com o modelo
+5.7 Criar a View para mostrar a temporadas
+view -> temporadas -> Index
+
+6.0 Refatorando a criação de séries
+
+6.1 Criando uma classe
+Dentro de APP criar pasta Services
+6.2 Criar funcao que retornar a series
+public function criarSerie(string $nomeSerie, int $qtd_temporadas, int $ep_por_temporada): Serie
+
+7.0 Alterando a exclusão com relacionamento
+7.1 Alterar a funcao destroy
+ public function destroy(Request $request)
+ 7.2 Buscar a series
+ 7.3 Pegar as temporadas de uma Serie
+ Usaremos o each que para cada interacao ele execulta uma funcao
+7.4 Dentro da funcao each
+passar o modelo da Temporada usar a funcao delete
+7.5 Deletar episodios de uma temporada
+usando a funcao each
+7.6 Deletar  a serie
+
+8.0 Refatorando a exclusão
+8.1 Dentro de Serie criar class
+Removedor de Serie
+8.2
+criar a funcao removerSerie
+
+9.0 Deletar com Transaction
+9.1 dentro da funcao removerSerie
+fazer a marcacao DB:: Transaction
+9.2 Retornando o valor que esteje fora da transacao
+criar a variavel antes da marcacao db:: Transaction
+$nomeSerie = '';
+9.3 Fazer o use dentro da transacao
+ DB::transaction(function () use ($serieId, &$nomeSerie) {
+9.4 usar & para usar o valor absoluto
+9.5 criando metodo para da cada coisa
+removerSerie
+removerTemporadas
+removerEpisodios
+
+10.0 Refatoração do nosso código de criação de uma série
+
+11.0 Alterando o nome da série
+11.1 Editando a View
+view -> serie -> Index
+11.2 Adicionar Botao de Edite
+11.3 Finalizando a alteração do nome
+11.3.1 Fazer uma funcao via js para esconder o input
+11.3.2  Fazer uma funcao para pegar o nome e enviar para a rota do laravel
+11.3.3 Adicionando a rota
+11.3.4 Adicionando funcao no Controller
+
+
+12.0 Exibindo o número de episódios
+
+12.1 Adiconando um Link da temporadas para episodios
+view->temporadas->index.blade.php
+12.2 Adicionando icone para numero de episodios
+view->temporadas->index.blade.php
+
+13.0 Listando os episódios Assistido
+13.1 No href da temporadas index Adicionar uma rota
+13.2 Criar a rota no arquivo routes->Web.php
+13.3 Criar arquivo episodios Controller
+php artisan make Controller EpisodiosController
+13.4 Criar  a funcao index dentro Controller EpisodiosController
+13.4 Criar View episodios
+view->episodios->index
+
+14.0 Criando as migrations campo Assistido
+php artisan make:migration adiciona_campo_assistido --table=episodios
+14.1 execultando a migrate
+php artisan migrate
+14.2 Eviandno episodios como visto para o banco de dados
+14.3 Criando a rota na na view episodios->index
+14.4 Criar a rota no arquivo routes->Web.php
+14.5 Criando a funcao Assitir no Controller EpisodiosController
+
+15.0 Mostrando para o usuário
+
+16.0 Exibindo os episódios assistidos
+17.0 Autenticação feita pelo Laravel
+18.0 Protegendo rotas com middleware
+19.0 Criando autenticação própria
+20.0 Registrando os nossos usuários
+21.0 Menu de navegação e logout
+22.0 Protegendo o necessário
+23.0 Middleware
+# Parei Aqui
+https://cursos.alura.com.br/course/laravel-autenticacao-relacionamentos-testes/task/53795
+Mostrando para o usuário
